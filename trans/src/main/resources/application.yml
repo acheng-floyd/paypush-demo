@@ -9,4 +9,4 @@ trans:
   pushUrl: "http://localhost:26000/push"
   timeoutSeconds: 4
   intervalMs: 200
-  concurrency: 200
+  concurrency: 100

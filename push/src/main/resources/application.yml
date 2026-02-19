@@ -18,8 +18,8 @@ push:
 
   httpclient:
     # 连接池,默认maxTotal = 20，maxPerRoute = 2
-    maxTotal: 200
-    maxPerRoute: 200
+    maxTotal: 20
+    maxPerRoute: 2
 
     # 连接复用/keep-alive
     connectionReuse: true
