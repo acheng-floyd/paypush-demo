@@ -38,6 +38,7 @@ public class TransApplication implements CommandLineRunner {
         AtomicLong seq = new AtomicLong(0);
 
         Flux.interval(Duration.ofMillis(intervalMs))
+                .onBackpressureDrop()   // ⭐ 关键修复
                 .flatMap(i -> {
                     String reqId = seq.incrementAndGet() + "-" + UUID.randomUUID().toString().substring(0, 8);
 

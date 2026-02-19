@@ -1,0 +1,35 @@
+server:
+  port: 26000
+
+reactor:
+  netty:
+    ioWorkerCount: 16
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+
+push:
+  mode: offload   # blocking | offload | webclient
+  orderBaseUrl: "http://localhost:27000"
+
+  # 用于 WebClient 的整体超时(秒)（Reactor timeout + Netty read timeout）
+  orderTimeoutSeconds: 60
+
+  httpclient:
+    # 连接池,默认maxTotal = 20，maxPerRoute = 2
+    maxTotal: 20
+    maxPerRoute: 2
+
+    # 连接复用/keep-alive
+    connectionReuse: true
+    keepAliveSeconds: 30
+
+    # 超时
+    connectTimeoutMs: 2000
+    readTimeoutMs: 60000
+    connectionRequestTimeoutMs: 2000
+
+    # 连接池状态日志
+    poolLogEnabled: true
+    poolLogIntervalSeconds: 2
