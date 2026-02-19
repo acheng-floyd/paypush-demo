@@ -8,5 +8,30 @@ logging:
 trans:
   pushUrl: "http://localhost:26000/push"
   timeoutSeconds: 4
-  intervalMs: 200
-  concurrency: 300
+
+  # ===== 速率控制（令牌桶）=====
+  qps: 10                 # 平均 QPS（长期平均）
+  tokenRefillMs: 100      # 令牌补充粒度（越小越平滑，建议 50~200ms）
+  tokenBucketCapacity: 200  # 桶容量（允许短暂突发的上限）
+
+  # ===== 并发控制 =====
+  concurrency: 100
+
+  # ===== 非匀速模拟 =====
+  jitterMsMax: 150        # 每次发请求前额外 sleep 0~jitterMsMax ms 的抖动
+
+  # 突发模式：随机进入 burstDurationMs 的突发期，QPS *= burstFactor
+  burst:
+    enabled: true
+    probabilityPerSecond: 0.10   # 每秒 10% 概率触发一次突发
+    durationMsMin: 800
+    durationMsMax: 1800
+    factorMin: 2.0
+    factorMax: 4.0
+
+  # 空窗模式：随机进入 pauseDuration 的空窗期（几秒几次/几秒一次）
+  pause:
+    enabled: true
+    probabilityPerSecond: 0.06   # 每秒 6% 概率触发一次空窗
+    durationMsMin: 1200
+    durationMsMax: 4500
