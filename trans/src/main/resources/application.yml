@@ -1,0 +1,12 @@
+server:
+  port: 28000
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+
+trans:
+  pushUrl: "http://localhost:26000/push"
+  timeoutSeconds: 4
+  intervalMs: 200
+  concurrency: 200

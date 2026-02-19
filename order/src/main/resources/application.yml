@@ -1,0 +1,11 @@
+server:
+  port: 27000
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+
+order:
+  sleep:
+    minMs: 1000
+    maxMs: 3000

@@ -1,0 +1,4 @@
+# Project exclude paths
+/order/target/
+/push/target/
+/trans/target/
