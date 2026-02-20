@@ -33,13 +33,7 @@ order:
 
 #### B) trans（提高并发 + 提高频率，让 push 持续有压力）
 
-```
-trans/application.yml
-trans:
-  timeoutSeconds: 4
-  intervalMs: 30
-  concurrency: 200
-```
+参考Trans参数说明.md
 
 #### C) push（让 offload 有“部分超时”的空间）
 
